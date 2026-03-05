@@ -200,10 +200,12 @@ diff -u0 a/medusa_A.cc b/medusa_A.cc
 --- a/medusa_A.cc	2000-10-03 16:17:24.000000000 -0400
 +++ b/medusa_A.cc	2000-10-03 16:17:24.000000000 -0400
 @@ -4,0 +5,2 @@
-+#define _POSIX_C_SOURCE 1
++#define _XOPEN_SOURCE 600
 +#include <cmath>
-@@ -20 +22 @@
+@@ -19,2 +21,2 @@
+-const ddouble infinity = 1e100;
 -const ddouble INFINITY = 1e100;
++const ddouble infinity_ = 1e100;
 +const ddouble INFINITY_ = 1e100;
 @@ -118 +120 @@
 -		return (INFINITY);
@@ -279,17 +281,39 @@ diff -u0 a/medusa_B.cc b/medusa_B.cc
 --- a/medusa_B.cc	2000-10-03 16:17:24.000000000 -0400
 +++ b/medusa_B.cc	2000-10-03 16:17:24.000000000 -0400
 @@ -10,0 +11,2 @@
-+#define _POSIX_C_SOURCE 1
++#define _XOPEN_SOURCE 600
 +#include <cmath>
+@@ -15 +17 @@
+-const ddouble infinity = 1e100;
++const ddouble infinity_ = 1e100;
 @@ -37 +39 @@
 -    return (1/z);
 +    return (1.0/z);
+@@ -39 +41 @@
+-    return(infinity);
++    return(infinity_);
+@@ -274 +276 @@
+-    new Segment(infinity*exp(CComplex(0, 2*M_PI*table2[1]/q)));
++    new Segment(infinity_*exp(CComplex(0, 2*M_PI*table2[1]/q)));
+@@ -289,2 +291,2 @@
+-        z1 = infinity;
+-        z2 = -infinity;
++        z1 = infinity_;
++        z2 = -infinity_;
+@@ -294,2 +296,2 @@
+-        z1 = -infinity;
+-	z2 = infinity;
++        z1 = -infinity_;
++	z2 = infinity_;
 @@ -299 +301 @@
 -      CComplex tmp = ((b-1)*u+1-a)/(b*u-a);
 +      CComplex tmp = ((b-1.0)*u+1.0-a)/(b*u-a);
 @@ -551 +553 @@
 -  b = (omega2-1)/(omega2-omega1);
 +  b = (omega2-1.0)/(omega2-omega1);
+@@ -759 +761 @@
+-  if (!(r<infinity))
++  if (!(r<infinity_))
 @@ -764 +766 @@
 -	  s << ",[" << a+(b-a)*j/n << "]";
 +	  s << ",[" << a+(b-a)*static_cast<double>(j)/static_cast<double>(n) << "]";
