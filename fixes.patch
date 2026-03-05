@@ -1,0 +1,385 @@
+diff -u0 a/CP1.h b/CP1.h
+--- a/CP1.h	2000-10-03 16:17:23.000000000 -0400
++++ b/CP1.h	2000-10-03 16:17:23.000000000 -0400
+@@ -55 +55 @@
+-inline CP_1::CP_1(void) { };
++inline CP_1::CP_1(void) { }
+@@ -60 +60 @@
+-};
++}
+@@ -65 +65 @@
+-};
++}
+@@ -71 +71 @@
+-};
++}
+@@ -78 +78 @@
+-};
++}
+@@ -83 +83 @@
+-};
++}
+@@ -88 +88 @@
+-};
++}
+@@ -94 +94 @@
+-};
++}
+@@ -105 +105 @@
+-};
++}
+@@ -111 +111 @@
+-};
++}
+@@ -115 +115 @@
+-}; 
++} 
+@@ -120 +120 @@
+-};
++}
+@@ -126 +126 @@
+-};
++}
+@@ -130 +130 @@
+-};
++}
+@@ -134 +134 @@
+-};
++}
+@@ -140 +140 @@
+-};
++}
+@@ -145 +145 @@
+-};
++}
+@@ -150 +150 @@
+-};
++}
+@@ -155 +155 @@
+-};
++}
+@@ -161 +161 @@
+-};
++}
+@@ -166 +166 @@
+-};
++}
+@@ -171 +171 @@
+-};
++}
+@@ -177 +177 @@
+-};
++}
+diff -u0 a/Makefile b/Makefile
+--- a/Makefile	2000-10-03 16:17:23.000000000 -0400
++++ b/Makefile	2000-10-03 16:17:23.000000000 -0400
+@@ -0,0 +1 @@
++CXX = c++ -std=c++98 -O2
+@@ -5 +6 @@
+-	g++ -o draw_pb_sphere draw_pb_sphere.cc
++	$(CXX) -o draw_pb_sphere draw_pb_sphere.cc
+@@ -8 +9 @@
+-	g++ -o drawpullback drawpullback.cc
++	$(CXX) -o drawpullback drawpullback.cc
+@@ -11 +12 @@
+-	g++ -c find_matings.cc -fhandle-exceptions
++	$(CXX) -c find_matings.cc
+@@ -14 +15 @@
+-	g++ -o find_matings find_matings.o medusa_B.o medusa_A.o
++	$(CXX) -o find_matings find_matings.o medusa_B.o medusa_A.o
+@@ -17 +18 @@
+-	g++ -c mate_interact.cc -fhandle-exceptions
++	$(CXX) -c mate_interact.cc
+@@ -20 +21 @@
+-	g++ -o mate_interact mate_interact.o medusa_B.o medusa_A.o
++	$(CXX) -o mate_interact mate_interact.o medusa_B.o medusa_A.o
+@@ -23 +24 @@
+-	g++ -c cktypes.cc
++	$(CXX) -c cktypes.cc
+@@ -26 +27 @@
+-	g++ -c psoop.cc
++	$(CXX) -c psoop.cc
+@@ -29 +30 @@
+-	g++ -c dynarray.C
++	$(CXX) -c dynarray.C
+@@ -32 +33 @@
+-	g++ -c medusa_A.cc -fhandle-exceptions
++	$(CXX) -c medusa_A.cc
+@@ -35 +36 @@
+-	g++ -c medusa_B.cc -fhandle-exceptions
++	$(CXX) -c medusa_B.cc
+diff -u0 a/cktypes.cc b/cktypes.cc
+--- a/cktypes.cc	2000-10-03 16:17:23.000000000 -0400
++++ b/cktypes.cc	2000-10-03 16:17:23.000000000 -0400
+@@ -19 +19 @@
+-}; // cmykcolour setcmyk (Byte, Byte, Byte, Byte);
++} // cmykcolour setcmyk (Byte, Byte, Byte, Byte);
+@@ -26 +26 @@
+-}; // mixcolour::reportcolour(void)
++} // mixcolour::reportcolour(void)
+@@ -35 +35 @@
+-}; // mixcolour::reporttone(void)
++} // mixcolour::reporttone(void)
+diff -u0 a/cktypes.h b/cktypes.h
+--- a/cktypes.h	2000-10-03 16:17:23.000000000 -0400
++++ b/cktypes.h	2000-10-03 16:17:23.000000000 -0400
+@@ -13,2 +13,3 @@
+-#include <iostream.h>
+-#include <complex.h>
++#include <iostream>
++#include <complex>
++using namespace std;
+diff -u0 a/draw_pb_sphere.cc b/draw_pb_sphere.cc
+--- a/draw_pb_sphere.cc	2000-10-03 16:17:23.000000000 -0400
++++ b/draw_pb_sphere.cc	2000-10-03 16:17:23.000000000 -0400
+@@ -2 +2 @@
+-#include<iostream.h>
++#include<iostream>
+@@ -183 +183 @@
+-void main(void)
++int main(void)
+diff -u0 a/drawpullback.cc b/drawpullback.cc
+--- a/drawpullback.cc	2000-10-03 16:17:24.000000000 -0400
++++ b/drawpullback.cc	2000-10-03 16:17:24.000000000 -0400
+@@ -3 +3 @@
+-#include<iostream.h>
++#include<iostream>
+@@ -118 +118 @@
+-	  u = (b*z*z - b + 1);
++	  u = (b*z*z - b + 1.0);
+@@ -120 +120 @@
+-	    z = (a*z*z - a + 1)/u;
++	    z = (a*z*z - a + 1.0)/u;
+@@ -144 +144 @@
+-void main(void)
++int main(void)
+diff -u0 a/dynarray.C b/dynarray.C
+--- a/dynarray.C	2000-10-03 16:17:24.000000000 -0400
++++ b/dynarray.C	2000-10-03 16:17:24.000000000 -0400
+@@ -33 +33 @@
+-  tmpptr = new(T[nylengde]);
++  tmpptr = new T[nylengde];
+@@ -124 +124 @@
+-  table = new (T[lengde]);
++  table = new T[lengde];
+@@ -230 +230 @@
+-  table = new(T[lengde]);
++  table = new T[lengde];
+diff -u0 a/dynarray.h b/dynarray.h
+--- a/dynarray.h	2000-10-03 16:17:24.000000000 -0400
++++ b/dynarray.h	2000-10-03 16:17:24.000000000 -0400
+@@ -51 +51,2 @@
+-#include <iostream.h>    // pga cout and <<
++#include <iostream>    // pga cout and <<
++using namespace std;
+@@ -55 +56 @@
+-const maxlengde=32000; // maximum antal elements en DynArray kan indeholde
++const int maxlengde=32000; // maximum antal elements en DynArray kan indeholde
+@@ -58,0 +60,2 @@
++template<class T> class DynArray;
++template<class T> ostream& operator<<(ostream& stream, DynArray<T> a);
+@@ -125 +128 @@
+-friend ostream& operator<<(ostream& stream, DynArray<T> a);
++friend ostream& operator<<<>(ostream& stream, DynArray<T> a);
+diff -u0 a/find_matings.cc b/find_matings.cc
+--- a/find_matings.cc	2000-10-03 16:17:24.000000000 -0400
++++ b/find_matings.cc	2000-10-03 16:17:24.000000000 -0400
+@@ -2 +2 @@
+-#include<fstream.h>
++#include<fstream>
+@@ -78 +78 @@
+-void main (void)
++int main (void)
+diff -u0 a/mate_interact.cc b/mate_interact.cc
+--- a/mate_interact.cc	2000-10-03 16:17:24.000000000 -0400
++++ b/mate_interact.cc	2000-10-03 16:17:24.000000000 -0400
+@@ -4 +4 @@
+-void main(void) 
++int main(void) 
+diff -u0 a/medusa_A.cc b/medusa_A.cc
+--- a/medusa_A.cc	2000-10-03 16:17:24.000000000 -0400
++++ b/medusa_A.cc	2000-10-03 16:17:24.000000000 -0400
+@@ -4,0 +5,2 @@
++#define _POSIX_C_SOURCE 1
++#include <cmath>
+@@ -20 +22 @@
+-const ddouble INFINITY = 1e100;
++const ddouble INFINITY_ = 1e100;
+@@ -118 +120 @@
+-		return (INFINITY);
++		return (INFINITY_);
+@@ -285,3 +287,3 @@
+-	//if (norm (a) >= INFINITY
+-	//    || norm (b) >= INFINITY
+-	//    || norm (star) >= INFINITY)
++	//if (norm (a) >= INFINITY_
++	//    || norm (b) >= INFINITY_
++	//    || norm (star) >= INFINITY_)
+@@ -306,2 +308,2 @@
+-		center = INFINITY;
+-		radius = INFINITY;
++		center = INFINITY_;
++		radius = INFINITY_;
+@@ -310 +312 @@
+-	average = (a + b + star) / 3;
++	average = (a + b + star) / 3.0;
+@@ -312 +314 @@
+-	if (abs (center) >= INFINITY) {
++	if (abs (center) >= INFINITY_) {
+@@ -541 +543 @@
+-	} else if (discriminant >= INFINITY) {
++	} else if (discriminant >= INFINITY_) {
+@@ -549,0 +552 @@
++		y = 0.0; // FIXME
+@@ -624,0 +628 @@
++	throw Corruption ();
+@@ -695,2 +699,2 @@
+-		if (!(abs (center) < INFINITY))
+-			if (!(abs (star) < INFINITY))
++		if (!(abs (center) < INFINITY_))
++			if (!(abs (star) < INFINITY_))
+@@ -725 +729 @@
+-					new_point = (a + b)/2;
++					new_point = (a + b)/2.0;
+@@ -733 +737 @@
+-	if (!(abs (center) < INFINITY)) {
++	if (!(abs (center) < INFINITY_)) {
+@@ -737 +741 @@
+-		if (!(abs (star) < INFINITY)
++		if (!(abs (star) < INFINITY_)
+@@ -746 +750 @@
+-					    && imag ((z-a)/(b-a)) * imag ((0-a)/(b-a)) >= 0) {
++					    && imag ((z-a)/(b-a)) * imag ((0.0-a)/(b-a)) >= 0) {
+@@ -758 +762 @@
+-				    && imag ((z-a)/(b-a)) * imag ((0-a)/(b-a)) >= 0) {
++				    && imag ((z-a)/(b-a)) * imag ((0.0-a)/(b-a)) >= 0) {
+@@ -767 +771 @@
+-		if (!(abs (star) < INFINITY)) {
++		if (!(abs (star) < INFINITY_)) {
+@@ -971 +975 @@
+-	int star_at_inf = (norm (star) >= INFINITY); 
++	int star_at_inf = (norm (star) >= INFINITY_); 
+@@ -974,3 +978,3 @@
+-			a_mob = 1/(a - star);	   /* Mobius transformation   */
+-			b_mob = 1/(b - star);	   /* taking star to infinity */
+-			c_mob = 1/(c - star);
++			a_mob = 1.0/(a - star);	   /* Mobius transformation   */
++			b_mob = 1.0/(b - star);	   /* taking star to infinity */
++			c_mob = 1.0/(c - star);
+@@ -989 +993 @@
+-				z_mob = star_at_inf ? z : 1/(z - star);
++				z_mob = star_at_inf ? z : 1.0/(z - star);
+diff -u0 a/medusa_A.h b/medusa_A.h
+--- a/medusa_A.h	2000-10-03 16:17:24.000000000 -0400
++++ b/medusa_A.h	2000-10-03 16:17:24.000000000 -0400
+@@ -4 +4 @@
+-#include <complex.h>
++#include <complex>
+diff -u0 a/medusa_B.cc b/medusa_B.cc
+--- a/medusa_B.cc	2000-10-03 16:17:24.000000000 -0400
++++ b/medusa_B.cc	2000-10-03 16:17:24.000000000 -0400
+@@ -10,0 +11,2 @@
++#define _POSIX_C_SOURCE 1
++#include <cmath>
+@@ -37 +39 @@
+-    return (1/z);
++    return (1.0/z);
+@@ -299 +301 @@
+-      CComplex tmp = ((b-1)*u+1-a)/(b*u-a);
++      CComplex tmp = ((b-1.0)*u+1.0-a)/(b*u-a);
+@@ -551 +553 @@
+-  b = (omega2-1)/(omega2-omega1);
++  b = (omega2-1.0)/(omega2-omega1);
+@@ -764 +766 @@
+-	  s << ",[" << a+(b-a)*j/n << "]";
++	  s << ",[" << a+(b-a)*static_cast<double>(j)/static_cast<double>(n) << "]";
+@@ -816 +818 @@
+-};
++}
+@@ -974 +976 @@
+-  CComplex omega2 = (1 - c.a)/(1 - c.b);
++  CComplex omega2 = (1.0 - c.a)/(1.0 - c.b);
+@@ -1032 +1034 @@
+-    << ((1-c.a)/(1-c.b)) << "]], style = point, symbol=CROSS):" << endl;
++    << ((1.0-c.a)/(1.0-c.b)) << "]], style = point, symbol=CROSS):" << endl;
+@@ -1036 +1038 @@
+-};
++}
+diff -u0 a/medusa_B.h b/medusa_B.h
+--- a/medusa_B.h	2000-10-03 16:17:25.000000000 -0400
++++ b/medusa_B.h	2000-10-03 16:17:25.000000000 -0400
+@@ -5 +5 @@
+-#include <fstream.h>
++#include <fstream>
+@@ -16,0 +17 @@
++    virtual ~Medusa_comp() {};
+diff -u0 a/psoop.cc b/psoop.cc
+--- a/psoop.cc	2000-10-03 16:17:25.000000000 -0400
++++ b/psoop.cc	2000-10-03 16:17:25.000000000 -0400
+@@ -146 +146 @@
+-};
++}
+@@ -169 +169 @@
+-};
++}
+@@ -213 +213 @@
+-  #else ILL_COOR
++  #else // ILL_COOR
+@@ -216 +216 @@
+-  #endif ILL_COOR
++  #endif // ILL_COOR
+@@ -227 +227 @@
+-};
++}
+@@ -278 +278 @@
+-#else ILL_COOR
++#else // ILL_COOR
+@@ -281 +281 @@
+-#endif ILL_COOR
++#endif // ILL_COOR
+@@ -295 +295 @@
+-};
++}
+@@ -442 +442 @@
+-};
++}
+@@ -500 +500 @@
+-};
++}
+@@ -519 +519 @@
+-};
++}
+@@ -558 +558 @@
+-#else ILL_COOR
++#else // ILL_COOR
+@@ -561 +561 @@
+-#endif ILL_COOR
++#endif // ILL_COOR
+@@ -574 +574 @@
+-};
++}
+@@ -611 +611 @@
+-#else  ILL_COOR
++#else  // ILL_COOR
+@@ -614 +614 @@
+-#endif  ILL_COOR
++#endif  // ILL_COOR
+@@ -625 +625 @@
+-};
++}
+@@ -752 +752 @@
+-};
++}
+diff -u0 a/psoop.h b/psoop.h
+--- a/psoop.h	2000-10-03 16:17:25.000000000 -0400
++++ b/psoop.h	2000-10-03 16:17:25.000000000 -0400
+@@ -9,3 +9,3 @@
+-#include <iomanip.h>	 // Used to manipulate the output of ostream
+-#include <iostream.h> // stream output to screen
+-#include <fstream.h>	 // stream output to file
++#include <iomanip>	 // Used to manipulate the output of ostream
++#include <iostream> // stream output to screen
++#include <fstream>	 // stream output to file
+@@ -223 +223 @@
+-#endif __CKPSOOP_H
++#endif // __CKPSOOP_H
