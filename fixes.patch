@@ -320,13 +320,18 @@ diff -u0 a/medusa_B.cc b/medusa_B.cc
 @@ -816 +818 @@
 -};
 +}
-@@ -974 +976 @@
+@@ -864,0 +867,4 @@
++  delete i_preim1;
++  delete i_preim2;
++  delete o_preim1;
++  delete o_preim2;
+@@ -974 +980 @@
 -  CComplex omega2 = (1 - c.a)/(1 - c.b);
 +  CComplex omega2 = (1.0 - c.a)/(1.0 - c.b);
-@@ -1032 +1034 @@
+@@ -1032 +1038 @@
 -    << ((1-c.a)/(1-c.b)) << "]], style = point, symbol=CROSS):" << endl;
 +    << ((1.0-c.a)/(1.0-c.b)) << "]], style = point, symbol=CROSS):" << endl;
-@@ -1036 +1038 @@
+@@ -1036 +1042 @@
 -};
 +}
 diff -u0 a/medusa_B.h b/medusa_B.h
